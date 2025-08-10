@@ -32,6 +32,10 @@
     <!-- favicons
 	================================================== -->
     <link rel="icon" type="image/png" href="academix.jpg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+    />
   </head>
 
   <body id="top">
@@ -40,7 +44,7 @@
     <header>
       <div class="row">
         <div class="logo">
-          <img src="academix.jpg" alt="academix">
+          <img src="academix.jpg" alt="academix" />
         </div>
 
         <nav id="main-nav-wrap">
@@ -84,9 +88,7 @@
             </div>
 
             <h5>Bienvenido a Academix</h5>
-            <h1>
-              Nuestro sitio web académico automatizará procesos escolares
-            </h1>
+            <h1>Nuestro sitio web académico automatizará procesos escolares</h1>
 
             <a class="button stroke smoothscroll" href="#process" title=""
               >Ver más</a
@@ -100,19 +102,14 @@
 
       <div id="video-popup" class="popup-modal mfp-hide">
         <div class="fluid-video-wrapper">
-          <iframe
-            src="http://player.vimeo.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=faec09"
-            width="500"
-            height="281"
-            frameborder="0"
-            webkitallowfullscreen
-            mozallowfullscreen
-            allowfullscreen
-          ></iframe>
+          <video id="promo-video" width="100%" height="" controls>
+            <source src="promocional.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <a class="close-popup">Cerrar</a>
       </div>
+
       <!-- /video-popup -->
     </section>
     <!-- /intro -->
@@ -311,7 +308,11 @@
 
           <ul class="stores">
             <li class="windows-store">
-              <a href="../login.php" class="button round large" title="Versión web">
+              <a
+                href="../login.php"
+                class="button round large"
+                title="Versión web"
+              >
                 <i class="icon ion-earth"></i>Sitio Web
               </a>
             </li>
@@ -423,5 +424,31 @@
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".video-link a").magnificPopup({
+          type: "inline",
+          midClick: true,
+          callbacks: {
+            open: function () {
+              const video = document.getElementById("promo-video");
+              if (video) {
+                video.play();
+              }
+            },
+            close: function () {
+              const video = document.getElementById("promo-video");
+              if (video) {
+                video.pause();
+                video.currentTime = 0;
+              }
+            },
+          },
+        });
+      });
+    </script>
   </body>
 </html>
